@@ -1,0 +1,26 @@
+model Employe{
+    id String @id @default(uuid())
+    firstName String @default("first_name")
+    middleName String @default("last-name")
+    lastName String @default("lastName")
+    gender Gender @default("male")
+    age Int
+    role Role @default("Doctor")
+    phoneNumber Int @map("phone_number") @unique
+    emial String @unique 
+    password String
+    doctor Doctor[]
+
+}
+
+
+enum Gender{
+    male
+    female
+}
+enum Role{
+    Doctor
+    Reception
+    Admin
+    labTechnitial
+}

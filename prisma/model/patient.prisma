@@ -1,11 +1,13 @@
 model Patient{
-    id Int  @id @default(uuid())
+    id String  @id @default(uuid())
     firstName  String   @map("first_name")
+    middleName String @map("middle_name")
     lastName  String  @map("last_name")
     phoneNumber  Int  @map("phone_number")
     gender  Gender   @default("male")
     age  Int
     createdAt  DateTime  @default(now())
+
 }
 
 enum Gender{
