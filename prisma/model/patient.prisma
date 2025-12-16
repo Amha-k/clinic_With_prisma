@@ -4,13 +4,9 @@ model Patient{
     middleName String @map("middle_name")
     lastName  String  @map("last_name")
     phoneNumber  Int  @map("phone_number")
-    gender  Gender   @default("male")
+    gender  Gender   @default(male)
     age  Int
     createdAt  DateTime  @default(now())
-
+    medicalRecord MedicalRecord[]
 }
 
-enum Gender{
-male
-female
-}

@@ -1,0 +1,58 @@
+model LabRequest {
+    id              String           @id @default(uuid())
+    requestedBy     Doctor           @relation(fields: [requestedById], references: [doctorId])
+    requestedById   String           @map("requested_by_id")
+    requestedAt     DateTime         @default(now())
+    labRequestForms LabRequestForm[]
+}
+
+model LabFormTemplate {
+    id          String  @id @default(uuid())
+    name        String // name of the test type
+    description String?
+
+    fields LabFormField[]
+    requestForm LabRequestForm[]
+}
+
+model LabFormField {
+    id                String          @id @default(uuid())
+    labFormTemplate   LabFormTemplate @relation(fields: [labFormTemplateId], references: [id])
+    labFormTemplateId String
+
+    fieldName String
+    required  Boolean @default(false)
+    /**
+     * /
+     * //
+     * //
+     * /
+     * /
+     * //
+     * /
+     * /
+     * /
+     * /
+     */
+}
+
+model LabRequestForm {
+    id           String     @id @default(uuid())
+    labRequest   LabRequest @relation(fields: [labRequestId], references: [id])
+    labRequestId String
+
+    labFormTemplate   LabFormTemplate @relation(fields: [labFormTemplateId], references: [id])
+    labFormTemplateId String
+
+    filledFields LabRequestFormField[]
+    labResult LabResult[]
+}
+
+model LabRequestFormField {
+    id               String         @id @default(uuid())
+    labRequestForm   LabRequestForm @relation(fields: [labRequestFormId], references: [id])
+    labRequestFormId String
+
+    fieldName  String
+    fieldValue String
+}

@@ -3,13 +3,14 @@ model Employe{
     firstName String @default("first_name")
     middleName String @default("last-name")
     lastName String @default("lastName")
-    gender Gender @default("male")
+    gender Gender @default(male)
     age Int
-    role Role @default("Doctor")
+    role Role @default(Doctor)
     phoneNumber Int @map("phone_number") @unique
     emial String @unique 
     password String
     doctor Doctor[]
+    labAssistant LabResult[]
 
 }
 

@@ -1,0 +1,10 @@
+model MedicalRecord{
+id String @id @default(uuid())
+patientId String  @map("patient_id")
+patient Patient @relation(fields: [patientId] , references: [id])
+doctorId String @map("doctor_id")
+doctor Doctor @relation(fields: [doctorId], references: [doctorId])
+createdAt  DateTime @default(now())
+diagnosis  String
+@@map("medical_record")
+}

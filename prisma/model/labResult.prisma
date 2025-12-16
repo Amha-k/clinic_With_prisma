@@ -1,0 +1,13 @@
+model LabResult {
+    id               String           @id @default(uuid())
+    
+    labRequestForm   LabRequestForm   @relation(fields: [labRequestFormId], references: [id])
+    labRequestFormId String           @unique   // one result per form
+
+    completedBy      Employe        @relation(fields: [completedById], references: [id])
+    completedById    String
+
+    resultData       Json             // structured results
+    remarks          String?
+    completedAt      DateTime         @default(now())
+}

@@ -1,3 +1,8 @@
 model Doctor{
-    id 
+    doctorId String @id @map("doctor_id")
+    id Employe @relation(fields: [doctorId]  , references: [id])
+    specialization String 
+    yearOfExpriance Int @map("year_of_expriance")
+    medicalRecord MedicalRecord[]
+    labRequest LabRequest[]
 }

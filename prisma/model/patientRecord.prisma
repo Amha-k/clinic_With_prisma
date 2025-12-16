@@ -1,6 +1,0 @@
-model Record{
-
-
-
-    @@map("patient_record")
-}
